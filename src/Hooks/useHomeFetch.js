@@ -7,7 +7,7 @@ const initialState = {
     page: 0,
     results: [],
     total_pages: 0,
-    total_results: 0
+    total_results: 1
 };
 
 export const useHomeFetch = () => {
@@ -15,7 +15,7 @@ export const useHomeFetch = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    const fetchMovies = async (page, searchTerm = "") => {
+    const fetchMovies = async (page, searchTerm = '') => {
         try {
             setError(false);
             setLoading(true);
@@ -25,7 +25,7 @@ export const useHomeFetch = () => {
             setState(prev => ({
                 ...movies, 
                 results:
-                    page > 1 ? [...prev.results, ...movies.results] :[...movies.results]
+                    page > 1 ? [...prev.results, ...movies.results] : [...movies.results]
 
             }))
         } catch (error) {
@@ -40,7 +40,7 @@ export const useHomeFetch = () => {
 
     }, []);
 
-    return {state, loading, error };
+    return { state, loading, error };
 
 
 }
